@@ -54,6 +54,7 @@ group :development, :test do
   gem "rspec-rails", "~> 6.0.0"
   gem "rubocop", "~> 1.38", require: false
   gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :development do
