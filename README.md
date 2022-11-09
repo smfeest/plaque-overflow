@@ -28,3 +28,7 @@ You can create and initialise the application and test databases with:
 ## Starting the application
 
     bin/rails server
+
+## Running all tests
+
+    bin/rspec
