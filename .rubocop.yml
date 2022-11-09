@@ -1,2 +1,4 @@
+require: rubocop-rails
+
 AllCops:
   TargetRubyVersion: 3.1

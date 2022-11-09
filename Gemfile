@@ -53,6 +53,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails", "~> 6.0.0"
   gem "rubocop", "~> 1.38", require: false
+  gem "rubocop-rails", require: false
 end
 
 group :development do
