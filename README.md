@@ -1,24 +1,30 @@
-# README
+# Plaque Overflow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Ruby on Rails application that allows users to ask and answer
+questions.
 
-Things you may want to cover:
+## Required software
 
-* Ruby version
+- Ruby 3.1.2
+- PostgreSQL 14.5 or newer
 
-* System dependencies
+## Setting up databases
 
-* Configuration
+Assuming that:
 
-* Database creation
+- PostgreSQL is installed locally
+- The default 'peer' authentication mechanism is in use for local connections
+- A PostgreSQL role exists with the same name as your operating system user
+- Your PostgreSQL role has the `createdb` (or `superuser`) attribute
 
-* Database initialization
+You can create and initialise the application and test databases with:
 
-* How to run the test suite
+    bin/rails db:setup
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installing dependencies
 
-* Deployment instructions
+    bundle install
 
-* ...
+## Starting the application
+
+    bin/rails server
