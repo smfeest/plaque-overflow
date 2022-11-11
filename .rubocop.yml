@@ -10,5 +10,13 @@ AllCops:
     - db/schema.rb
     - vendor/bundle/**/*
 
+RSpec/ExampleLength:
+  Exclude:
+    - spec/system/**/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/system/**/*
+
 Style/Documentation:
   Enabled: false
