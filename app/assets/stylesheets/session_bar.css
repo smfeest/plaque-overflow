@@ -1,0 +1,9 @@
+.session-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.session-bar__action {
+  margin-inline-start: 1em;
+}
