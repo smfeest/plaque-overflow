@@ -18,5 +18,8 @@ RSpec/MultipleExpectations:
   Exclude:
     - spec/system/**/*
 
+RSpec/NestedGroups:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
