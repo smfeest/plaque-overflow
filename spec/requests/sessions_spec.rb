@@ -70,4 +70,18 @@ RSpec.describe 'Sessions' do
       end
     end
   end
+
+  describe 'sessions#destroy' do
+    it 'logs out the user' do
+      delete log_out_path
+
+      expect(session[:user_id]).to be_nil
+    end
+
+    it 'redirects to the root path' do
+      delete log_out_path
+
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end
