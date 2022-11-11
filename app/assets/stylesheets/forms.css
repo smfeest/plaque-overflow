@@ -1,0 +1,36 @@
+.field {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.field-label {
+  margin-bottom: 0.5em;
+}
+
+.field-input {
+  padding: 5px 10px;
+}
+
+.field_with_errors {
+  border-left: 5px solid #d4351c;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.error-summary {
+  border: 5px solid #d4351c;
+  margin-bottom: 1.5em;
+  padding: 0 15px;
+}
+
+.error-summary__title {
+  font-size: 1.5rem;
+}
+
+.error-summary__list {
+  list-style: none;
+  padding: 0;
+}

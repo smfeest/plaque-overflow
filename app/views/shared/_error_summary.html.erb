@@ -1,0 +1,10 @@
+<% if errors.any? %>
+  <div class="error-summary">
+    <h2 class="error-summary__title">There is a problem</h2>
+    <ul class="error-summary__list">
+      <% errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
