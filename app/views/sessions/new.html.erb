@@ -1,0 +1,15 @@
+<h1>Log in</h1>
+
+<%= form_with url: log_in_path do |f| %>
+  <div class="field">
+    <%= f.label :email, class: 'field-label' %>
+    <%= f.email_field :email, class: 'field-input', required: true, value: params[:email] %>
+  </div>
+  <div class="field">
+    <%= f.label :password, class: 'field-label' %>
+    <%= f.password_field :password, class: 'field-input', required: true %>
+  </div>
+  <div>
+    <%= f.submit 'Log in' %>
+  </div>
+<% end %>
