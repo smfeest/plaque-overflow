@@ -28,13 +28,14 @@ RSpec.describe 'Users' do
   end
 
   describe 'users#create' do
-    let(:user_params) { { name: 'Bob', email: 'bob@example.com', password: 'a-really-secure-password' } }
+    let(:email) { 'bob@example.com' }
+    let(:user_params) { { name: 'Bob', email:, password: 'a-really-secure-password' } }
     let(:post_create) { post register_path, params: { user: user_params } }
 
     it 'creates and logs in the user' do
       post_create
 
-      user = User.find_by(name: 'Bob', email: 'bob@example.com')
+      user = User.find_by(email:)
 
       expect(session[:user_id]).to eq(user.id)
     end
@@ -46,7 +47,7 @@ RSpec.describe 'Users' do
     end
 
     context 'when the form contains invalid attributes' do
-      let(:user_params) { { name: 'A' * 500, email: 'bob@example.com', password: 'a-really-secure-password' } }
+      let(:user_params) { { name: 'A' * 500, email:, password: 'a-really-secure-password' } }
 
       it 're-renders the registration form with the error summary' do
         post_create
@@ -58,6 +59,24 @@ RSpec.describe 'Users' do
         post_create
 
         expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+
+    context 'when the email address has already been registered' do
+      before do
+        create(:user, email:)
+      end
+
+      it 'redirects to the log in page' do
+        post_create
+
+        expect(response).to redirect_to(log_in_path(email:))
+      end
+
+      it 'sets an alert message advising the user to log in instead' do
+        post_create
+
+        expect(flash[:alert]).to include 'You’ve already registered with that email address'
       end
     end
   end
