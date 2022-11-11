@@ -15,6 +15,16 @@ RSpec.describe 'Sessions' do
 
       expect(response).to have_http_status(:success)
     end
+
+    context 'when the user is already logged in' do
+      include_context 'with a logged in user'
+
+      it 'redirects to the root path' do
+        get log_in_path
+
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 
   describe 'sessions#create' do

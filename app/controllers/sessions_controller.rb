@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  before_action :redirect_if_already_logged_in, only: :new
+
   def new; end
 
   def create
@@ -18,5 +20,11 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     redirect_to root_path
+  end
+
+  private
+
+  def redirect_if_already_logged_in
+    redirect_to root_path if current_user
   end
 end
