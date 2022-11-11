@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Lint Ruby files
+        run: bin/rubocop --parallel
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://ci:ci@localhost:5432/plaque_overflow_test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Start PostgreSQL server
+        run: |
+          sudo systemctl start postgresql.service
+          pg_isready
+      - name: Create PostgreSQL role
+        run: sudo -u postgres psql --command="CREATE USER ci PASSWORD 'ci' CREATEDB"
+      - name: Create and seed databases
+        run: bin/rails db:setup
+      - name: Run tests
+        run: bin/rspec
