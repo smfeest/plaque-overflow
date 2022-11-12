@@ -13,4 +13,11 @@ RSpec.describe ApplicationHelper do
       expect(helper.safe_user_name(user)).to eq 'Mia Knowles'
     end
   end
+
+  describe '#time_ago_tag' do
+    it 'returns a time tag showing the relative time ago' do
+      time = 4.days.ago
+      expect(helper.time_ago_tag(time)).to eq "<time datetime=\"#{time.iso8601}\">4 days ago</time>"
+    end
+  end
 end
