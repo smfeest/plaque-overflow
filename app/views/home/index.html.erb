@@ -1,2 +1,9 @@
 <h1>Welcome</h1>
 <p><%= link_to 'Ask a question', new_question_path %></p>
+
+<% if @recent_questions.load.any? %>
+<h2>Recent questions</h2>
+  <ul>
+    <%= render partial: 'question', collection: @recent_questions %>
+  </ul>
+<% end %>

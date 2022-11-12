@@ -1,0 +1,8 @@
+<li>
+  <%= link_to(question.title, question) %>
+  <span>
+    <%= time_ago_tag(question.created_at) %>
+    by
+    <%= safe_user_name(question.author) %>
+  </span>
+</li>

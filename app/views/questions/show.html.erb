@@ -1,7 +1,7 @@
 <div>
   Asked
-  <%= time_tag(@question.created_at, time_ago_in_words(@question.created_at)) %>
-  ago by
+  <%= time_ago_tag(@question.created_at) %>
+  by
   <%= safe_user_name(@question.author) %>
 </div>
 <h1><%= @question.title %></h1>
