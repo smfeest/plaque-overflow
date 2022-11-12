@@ -17,6 +17,30 @@ RSpec.describe 'Questions' do
 
       expect(response).to have_http_status(:success)
     end
+
+    context 'when the question has an answer' do
+      let(:answer_body) do
+        'Brush your teeth with fluoride toothpaste twice a day for about 2 minutes'
+      end
+
+      before do
+        create(:answer, question:, body: answer_body)
+      end
+
+      it 'renders the answer' do
+        get question_path(question)
+
+        expect(response.body).to include answer_body
+      end
+    end
+
+    context 'when the question does not have an answer' do
+      it 'renders a placeholder message' do
+        get question_path(question)
+
+        expect(response.body).to include 'Be the first to answer'
+      end
+    end
   end
 
   describe 'questions#new' do

@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
 
-  resources :questions, only: %i[show new create]
+  resources :questions, only: %i[show new create] do
+    resources :answers, only: %i[create]
+  end
 end
