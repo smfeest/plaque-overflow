@@ -5,4 +5,6 @@ class Question < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 250 }
   validates :body, presence: true
+
+  scope :order_by_most_recently_posted, -> { order(created_at: :desc) }
 end
