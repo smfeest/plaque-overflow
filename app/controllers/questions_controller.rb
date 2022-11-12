@@ -3,6 +3,7 @@
 class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
+    @new_answer = Answer.new(question: @question)
   end
 
   def new

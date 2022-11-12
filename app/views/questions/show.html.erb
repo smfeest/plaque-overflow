@@ -11,3 +11,13 @@
 <h2>Answers</h2>
 
 <%= render(partial: 'answer', collection: @question.answers) || 'Be the first to answer!' %>
+
+<%= form_for [@question, @new_answer] do |f| %>
+  <div class="field">
+    <%= f.label :body, 'Your answer', class: 'field-label' %>
+    <%= f.text_area :body, class: 'field-input', required: true %>
+  </div>
+  <div>
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>
