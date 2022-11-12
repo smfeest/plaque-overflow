@@ -7,3 +7,7 @@
 <h1><%= @question.title %></h1>
 
 <%= simple_format(@question.body) %>
+
+<h2>Answers</h2>
+
+<%= render(partial: 'answer', collection: @question.answers) || 'Be the first to answer!' %>

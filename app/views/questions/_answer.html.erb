@@ -1,0 +1,4 @@
+<div class="answer">
+  <p>Answered by <%= safe_user_name(answer.author) %> <%= time_ago_tag(answer.created_at) %></p>
+  <%= simple_format(answer.body) %>
+</div>
